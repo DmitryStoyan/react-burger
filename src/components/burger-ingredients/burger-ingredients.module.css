@@ -1,0 +1,25 @@
+.ingredientsGroupList {
+  display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  .ingredientsContainer {
+    max-width: 1240px;
+    overflow-y: auto;
+    max-height: 70vh;
+  }
+
+  .ingredientsContainer::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .ingredientsContainer::-webkit-scrollbar-thumb {
+    background-color: #8585ad;
+  }
+
+  .ingredientsContainer::-webkit-scrollbar-track {
+    background-color: #2f2f37;
+    margin: 40px 0 52px 0;
+  }
