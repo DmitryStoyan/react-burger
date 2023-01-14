@@ -1,0 +1,9 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1240px;
+  width: 100%;
+  gap: 41.5px;
+  margin: auto;
+}

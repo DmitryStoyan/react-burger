@@ -1,0 +1,26 @@
+.ingredientCardPrice {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.ingredientCardName {
+  text-align: center;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 272px;
+  width: 100vw;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
