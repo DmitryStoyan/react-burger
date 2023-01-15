@@ -18,7 +18,6 @@ const App = () => {
   // const [modal, setModal] = useState(false)
   const { order } = useAppSelector(store => store.ingredients)
   const [ingredient, setIngredient] = useState(null)
-  // const [order, setOrder] = useState(false)
   const dispatch = useAppDispatch()
 
   // const getIngredients = async () => {
