@@ -1,22 +1,54 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styles from './burger-ingredients.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import BurgerIngredient from '../burger-ingredient/burger-ingredient';
 import PropTypes from 'prop-types';
 import { ingredientType } from '../../utils/components-prop-types';
+import { useAppSelector, useAppDispatch } from '../../services/hooks'
+import useSwitchTabs from '../use-switch-tabs/use-switch-tabs';
+import {swithTab} from '../../services/reducers/ingredients'
 
-function BurgerIngredients({ data, onOpen }) {
-    const [current, setCurrent] = React.useState('one')
+function BurgerIngredients({ onOpen }) {
+    const dispatch = useAppDispatch()
+    // const [current, setCurrent] = React.useState('one')
+    const bunsRef = useRef(null)
+    const saucesRef = useRef(null)
+    const fillingsRef = useRef(null)
+    const rootRef = useRef(null)
 
-    const buns = data.filter((item) => {
+    const { ingredients, currentTab } = useAppSelector(store => store.ingredients)
+
+    const buns = ingredients.filter((item) => {
         return item.type === 'bun'
     })
-    const sauces = data.filter((item) => {
+    const sauces = ingredients.filter((item) => {
         return item.type === 'sauce'
     })
-    const fillings = data.filter((item) => {
+    const fillings = ingredients.filter((item) => {
         return item.type === 'main'
     })
+
+    const smoothSettings = { block: "start", behavior: "smooth" }
+
+    const handleBunTab = (event) => {
+        dispatch(swithTab(event))
+        bunsRef.current.scrollIntoView(smoothSettings);
+      }
+      const handleSauceTab = (event) => {
+        dispatch(swithTab(event))
+        saucesRef.current.scrollIntoView(smoothSettings);
+      }
+      const handleFillingsTab = (event) => {
+        dispatch(swithTab(event))
+        fillingsRef.current.scrollIntoView(smoothSettings);
+      }
+
+    const setCurrent = value => dispatch(swithTab(value))
+
+
+    useSwitchTabs(rootRef, bunsRef, () => setCurrent('buns'))
+    useSwitchTabs(rootRef, saucesRef, () => setCurrent('sauces'))
+    useSwitchTabs(rootRef, fillingsRef, () => setCurrent('fillings'))
 
 
     return (
@@ -25,13 +57,13 @@ function BurgerIngredients({ data, onOpen }) {
                 Соберите бургер
             </h2>
             <div style={{ display: 'flex' }}>
-                <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
+                <Tab value="bun" active={currentTab === 'bun'} onClick={handleBunTab}>
                     Булки
                 </Tab>
-                <Tab value="sauce" active={current === 'sauce'} onClick={setCurrent}>
+                <Tab value="sauce" active={currentTab === 'sauce'} onClick={handleSauceTab}>
                     Соусы
                 </Tab>
-                <Tab value="main" active={current === 'main'} onClick={setCurrent}>
+                <Tab value="main" active={currentTab === 'main'} onClick={handleFillingsTab}>
                     Начинки
                 </Tab>
             </div>
@@ -41,16 +73,16 @@ function BurgerIngredients({ data, onOpen }) {
                 </h3>
                 <ul className={styles.ingredientsGroupList}>
 
-                    <BurgerIngredient ingredients={buns}  onOpen={onOpen} />
+                    <BurgerIngredient ingredients={buns} onOpen={onOpen} ref={bunsRef} />
 
-               </ul>
+                </ul>
 
                 <h3 className="text text_type_main-medium">
                     Соусы
                 </h3>
                 <ul className={styles.ingredientsGroupList}>
 
-                    <BurgerIngredient ingredients={sauces}  onOpen={onOpen} />
+                    <BurgerIngredient ingredients={sauces} onOpen={onOpen} ref={saucesRef} />
 
                 </ul>
 
@@ -59,7 +91,7 @@ function BurgerIngredients({ data, onOpen }) {
                 </h3>
                 <ul className={styles.ingredientsGroupList}>
 
-                    <BurgerIngredient ingredients={fillings} onOpen={onOpen}  />
+                    <BurgerIngredient ingredients={fillings} onOpen={onOpen} ref={fillingsRef} />
 
                 </ul>
 
@@ -69,8 +101,8 @@ function BurgerIngredients({ data, onOpen }) {
 }
 
 BurgerIngredients.propTypes = {
-    data: PropTypes.arrayOf(ingredientType).isRequired,
+    // data: PropTypes.arrayOf(ingredientType).isRequired,
     onOpen: PropTypes.func.isRequired,
-  }
+}
 
 export default BurgerIngredients;
