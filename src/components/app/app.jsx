@@ -34,10 +34,6 @@ const App = () => {
     setIngredient(ingredient);
   }
 
-  // function handleOpenOrderDetails() {
-  //   setOrder(true);
-  // }
-
   // Закрываем модалку путем присвоение null свойству order
   const handleCloseOrderModal = () => {
     dispatch(closeOrderModal())
