@@ -20,15 +20,6 @@ const App = () => {
   const [ingredient, setIngredient] = useState(null)
   const dispatch = useAppDispatch()
 
-  // const getIngredients = async () => {
-  //   try {
-  //     const res = await api.getData()
-  //     setIngredients(res.data)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
-
   useEffect(
     () => {
       dispatch(getIngredients())
