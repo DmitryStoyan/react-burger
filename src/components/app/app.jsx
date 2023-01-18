@@ -18,17 +18,7 @@ const App = () => {
   // const [modal, setModal] = useState(false)
   const { order } = useAppSelector(store => store.ingredients)
   const [ingredient, setIngredient] = useState(null)
-  // const [order, setOrder] = useState(false)
   const dispatch = useAppDispatch()
-
-  // const getIngredients = async () => {
-  //   try {
-  //     const res = await api.getData()
-  //     setIngredients(res.data)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
 
   useEffect(
     () => {
@@ -38,16 +28,11 @@ const App = () => {
 
   function handleCloseModal() {
     setIngredient(null);
-    // setOrder(false);
   }
 
   function handleOpenModal(ingredient) {
     setIngredient(ingredient);
   }
-
-  // function handleOpenOrderDetails() {
-  //   setOrder(true);
-  // }
 
   // Закрываем модалку путем присвоение null свойству order
   const handleCloseOrderModal = () => {
