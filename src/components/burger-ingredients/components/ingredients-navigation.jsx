@@ -1,9 +1,11 @@
 import React from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
+import styles from './styles.module.css';
+import { ingredientsNavigationPropTypes } from '../../../utils/components-prop-types';
 
 function IngredientsNavigation({ tabs, currentTab, handleClick }) {
   return (
-    <div style={{ display: 'flex' }}>
+    <div className={styles.tabsWrapper}>
       {tabs.map((tab, index) => (
         <Tab
           key={index}
@@ -16,5 +18,8 @@ function IngredientsNavigation({ tabs, currentTab, handleClick }) {
     </div>
   );
 }
+
+
+IngredientsNavigation.propTypes = ingredientsNavigationPropTypes.isRequired
 
 export default IngredientsNavigation;

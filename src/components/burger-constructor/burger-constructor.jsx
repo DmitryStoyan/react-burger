@@ -12,6 +12,7 @@ import { addIngredient, deleteIngredient, sortCart } from '../../services/reduce
 import { useDrop, useDrag } from 'react-dnd';
 import uuid from 'react-uuid';
 import DndField from '../dnd-field/dnd-field';
+import {constructorIngredientPropTypes, stuffListPropTypes} from '../../utils/components-prop-types';
 
 // component
 const ConstructorIngredient = ({ ingredient, index, onMove }) => {
@@ -203,3 +204,6 @@ export default function BurgerConstructor() {
     </section>
   );
 }
+
+BurgerConstructor.propTypes = constructorIngredientPropTypes.isRequired
+StuffList.propTypes = stuffListPropTypes.isRequired

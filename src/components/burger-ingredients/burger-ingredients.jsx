@@ -46,7 +46,7 @@ function BurgerIngredients({ onOpen }) {
   return (
     <section className="pt-10 pl-5">
       <h2 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h2>
-      <div style={{ display: 'flex' }}>
+      <div className={styles.navigationWrapper}>
         <IngredientsNavigation
           tabs={[ProductType.Bun, ProductType.Sauce, ProductType.Main]}
           currentTab={currentTab}

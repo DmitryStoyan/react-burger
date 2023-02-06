@@ -16,3 +16,6 @@
   background-color: #2f2f37;
   margin: 40px 0 52px 0;
 }
+.navigationWrapper {
+  display: flex;
+}

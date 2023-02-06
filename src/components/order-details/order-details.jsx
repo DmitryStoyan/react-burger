@@ -7,7 +7,7 @@ export default function OrderDetails() {
 
   return (
     <div className={styles.order}>
-      <h3 className="text text_type_digits-large mt-20" style={{ textShadow: '0 0 30px #4c4cff' }}>{order.order.number}</h3>
+      <h3 className={styles.orderNumber}>{order.order.number}</h3>
       <p className="text text_type_main-medium mt-8 mb-15">идентификатор заказа</p>
       <img src={done} alt='Готово!' />
       <p className="text text_type_main-default mt-15 mb-2">Ваш заказ начали готовить</p>

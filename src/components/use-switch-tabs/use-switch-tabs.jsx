@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useSwitchTabsPropTypes } from '../../utils/components-prop-types';
 
 
 const useSwitchTabs = (rootRef, currentRef, switchTab) => {
@@ -34,6 +35,6 @@ const useSwitchTabs = (rootRef, currentRef, switchTab) => {
     }, [switchTab])
 }
 
-// useSwitchTabs.propTypes = useSwitchTabsPropTypes.isRequired
+useSwitchTabs.propTypes = useSwitchTabsPropTypes.isRequired
 
 export default useSwitchTabs

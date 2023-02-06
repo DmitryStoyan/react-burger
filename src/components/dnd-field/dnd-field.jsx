@@ -1,6 +1,6 @@
 
 import styles from './dnd-field.module.css'
-// import { dndFieldPropTypes } from '../../utils/types'
+import { dndFieldPropTypes } from '../../utils/components-prop-types'
 
 const DndField = ({ target, text, onHover }) => {
 
@@ -17,6 +17,6 @@ const DndField = ({ target, text, onHover }) => {
   )
 }
 
-// DndField.propTypes = dndFieldPropTypes.isRequired
+DndField.propTypes = dndFieldPropTypes.isRequired
 
 export default DndField
