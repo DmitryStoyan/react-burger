@@ -3,3 +3,8 @@
   align-items: center;
   flex-direction: column;
 }
+
+.orderNumber {
+  text-shadow: 0 0 30px #4c4cff;
+  composes: text text_type_digits-large mt-20 from global;
+}

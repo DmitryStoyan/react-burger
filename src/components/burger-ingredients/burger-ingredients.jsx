@@ -1,76 +1,72 @@
-import React from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import styles from './burger-ingredients.module.css';
-import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import BurgerIngredient from '../burger-ingredient/burger-ingredient';
+import IngredientsList from './components/ingredients-list';
 import PropTypes from 'prop-types';
-import { ingredientType } from '../../utils/components-prop-types';
+import IngredientsNavigation from './components/ingredients-navigation';
+import { useAppSelector } from '../../services/hooks';
+import { ProductType } from '../../utils/variables';
 
-function BurgerIngredients({ data, onOpen }) {
-    const [current, setCurrent] = React.useState('one')
+function BurgerIngredients({ onOpen }) {
+  const { ingredients } = useAppSelector((store) => store.ingredients);
 
-    const buns = data.filter((item) => {
-        return item.type === 'bun'
-    })
-    const sauces = data.filter((item) => {
-        return item.type === 'sauce'
-    })
-    const fillings = data.filter((item) => {
-        return item.type === 'main'
-    })
+  const [currentTab, setCurrentTab] = useState('bun');
 
+  const [bunsRef, inViewBuns] = useInView({ threshold: 0.6 });
+  const [saucesRef, inViewSauces] = useInView({ threshold: 0.1 });
+  const [fillingsRef, inViewFillings] = useInView({ threshold: 0.1 });
 
-    return (
-        <section className="pt-10 pl-5">
-            <h2 className="text text_type_main-large mt-10 mb-5">
-                Соберите бургер
-            </h2>
-            <div style={{ display: 'flex' }}>
-                <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
-                    Булки
-                </Tab>
-                <Tab value="sauce" active={current === 'sauce'} onClick={setCurrent}>
-                    Соусы
-                </Tab>
-                <Tab value="main" active={current === 'main'} onClick={setCurrent}>
-                    Начинки
-                </Tab>
-            </div>
-            <div className={styles.ingredientsContainer}>
-                <h3 className="text text_type_main-medium pt-5">
-                    Булки
-                </h3>
-                <ul className={styles.ingredientsGroupList}>
+  useEffect(() => {
+    if (inViewBuns) {
+      console.log(inViewBuns);
+      setCurrentTab('bun');
+    }
+    if (inViewSauces) {
+      setCurrentTab('sauce');
+      console.log(inViewSauces);
+    }
+    if (inViewFillings) {
+      console.log(inViewFillings);
+      setCurrentTab('main');
+    }
+  }, [inViewBuns, inViewFillings, inViewSauces]);
 
-                    <BurgerIngredient ingredients={buns}  onOpen={onOpen} />
+  const handleClick = useCallback(
+    (e) => {
+      setCurrentTab(e);
+      document.getElementById(e).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    },
+    [setCurrentTab],
+  );
 
-               </ul>
+  const buns = ingredients.filter((ingredient) => ingredient.type === ProductType.Bun.type);
+  const fillings = ingredients.filter((ingredient) => ingredient.type === ProductType.Main.type);
+  const sauces = ingredients.filter((ingredient) => ingredient.type === ProductType.Sauce.type);
 
-                <h3 className="text text_type_main-medium">
-                    Соусы
-                </h3>
-                <ul className={styles.ingredientsGroupList}>
-
-                    <BurgerIngredient ingredients={sauces}  onOpen={onOpen} />
-
-                </ul>
-
-                <h3 className="text text_type_main-medium">
-                    Начинки
-                </h3>
-                <ul className={styles.ingredientsGroupList}>
-
-                    <BurgerIngredient ingredients={fillings} onOpen={onOpen}  />
-
-                </ul>
-
-            </div>
-        </section>
-    )
+  return (
+    <section className="pt-10 pl-5">
+      <h2 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h2>
+      <div className={styles.navigationWrapper}>
+        <IngredientsNavigation
+          tabs={[ProductType.Bun, ProductType.Sauce, ProductType.Main]}
+          currentTab={currentTab}
+          handleClick={handleClick}
+        />
+      </div>
+      <div className={styles.ingredientsContainer}>
+        <h3 className="text text_type_main-medium pt-5">Булки</h3>
+        <IngredientsList ingredients={buns} onOpen={onOpen} ref={bunsRef} />
+        <h3 className="text text_type_main-medium">Соусы</h3>
+        <IngredientsList ingredients={sauces} onOpen={onOpen} ref={saucesRef} />
+        <h3 className="text text_type_main-medium">Начинки</h3>
+        <IngredientsList ingredients={fillings} onOpen={onOpen} ref={fillingsRef} />
+      </div>
+    </section>
+  );
 }
 
 BurgerIngredients.propTypes = {
-    data: PropTypes.arrayOf(ingredientType).isRequired,
-    onOpen: PropTypes.func.isRequired,
-  }
+  onOpen: PropTypes.func.isRequired,
+};
 
 export default BurgerIngredients;

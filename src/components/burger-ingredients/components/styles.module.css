@@ -5,6 +5,13 @@
   gap: 4px;
 }
 
+.ingredientsGroupList {
+  display: inline-flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
 .ingredientCardName {
   text-align: center;
 }
@@ -23,4 +30,8 @@
 
 .card:hover {
   transform: scale(1.05);
+}
+
+.tabsWrapper {
+  display: flex;
 }
