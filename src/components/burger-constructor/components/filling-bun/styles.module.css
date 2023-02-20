@@ -1,0 +1,39 @@
+.bun {
+  left:20px;
+  width: 88%;
+  height: 77px;
+  position: relative;
+  border: solid 2px #c9c2ec;
+}
+
+.bunTop {
+  composes: bun;
+  border-radius: 88px 88px 40px 40px;
+}
+
+.bunBottom::after {
+  position: absolute;
+  content: 'Перетащите булку';
+  left: 25%;
+  top: 30%;
+}
+
+.bunTop::after {
+  position: absolute;
+  content: 'Перетащите булку';
+  left: 25%;
+  top: 30%;
+}
+
+.bun:hover {
+  transform: scale(1.05);
+}
+
+.bunBottom {
+  composes: bun;
+  border-radius: 40px 40px 88px 88px;
+}
+
+
+
+

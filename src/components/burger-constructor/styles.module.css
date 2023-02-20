@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 600px;
+  max-height: 921px;
+}
+
+.list {
+  padding: 0;
+  list-style: none;
+}
+
+.ingredientList {
+  composes: list;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  flex: 1;
+}
+
+.fillingList {
+  composes: list;
+  max-height: 456px;
+  overflow-y: auto;
+}
+
+.fillingList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.fillingList::-webkit-scrollbar-thumb {
+  background-color: #8585ad;
+}
+
+.fillingList::-webkit-scrollbar-track {
+  background-color: #2f2f37;
+}
+
+.order {
+  display: flex;
+  align-self: end;
+  align-items: center;
+}

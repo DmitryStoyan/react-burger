@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 180px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 480px;
+  margin-bottom: 88px;
+}
+.form div {
+  width:100%
+}
+
+.form svg {
+  margin-left: 190px;
+}
+
+.title{
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #4c4cff;
+  transition: all 0.3s linear;
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+.link:active {
+  color: white;
+}

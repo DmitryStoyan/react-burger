@@ -1,17 +1,16 @@
-import styles from './modal-overlay.module.css';
-import { modalOverlayPropTypes } from '../../utils/components-prop-types';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './styles.module.css';
 
-export default function ModalOverlay({ onClose }) {
-
-  const closeModalOverlay = (event) => {
-    if (event.target.classList.contains(styles.overlay)) {
-      onClose()
-    }
-  }
-
-  return (
-    <div className={styles.overlay} onClick={closeModalOverlay}>
-    </div>
-  )
+/* Полупрозрачная подложка под модальное окно */
+function ModalOverlay({ handleClick }) {
+  return <div className={styles.overlay} onClick={handleClick} />;
 }
-ModalOverlay.propTypes = modalOverlayPropTypes.isRequired
+
+ModalOverlay.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+};
+
+export default ModalOverlay;

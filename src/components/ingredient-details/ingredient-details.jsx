@@ -1,40 +1,36 @@
-import styles from './ingredient-details.module.css'
-import { ingredientType } from '../../utils/components-prop-types'
-import { useEffect } from 'react';
+import React from 'react';
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import styles from './styles.module.css';
+import NutritionValue from './components/nutrition-value';
+import Preloader from '../preloader/preloader';
 
-const IngredientDetails = ({ ingredient }) => {
-  useEffect(() => {
-  }, [ingredient])
+/* Соержимое модалки с ингредиентом, которые устанваливаются кликом по выбранному ингредиенту */
+function IngredientDetails() {
+  const { id } = useParams();
+  const { ingredients } = useSelector((store) => store.ingredients);
+  // eslint-disable-next-line no-shadow
+  const ingredient = ingredients.find((ingredient) => ingredient._id === id);
+
   return (
-    (ingredient &&
-      <div className={styles.card}>
-        <img src={ingredient.image} alt={ingredient.name} className={styles.image} />
-        <p className={styles.cardTitle}>{ingredient.name}</p>
-        <ul className={styles.nutritionals}>
-          <li className={styles.item}>
-            <p className={styles.nutritionalTitle}>Калории,ккал</p>
-            <p className={styles.nutritionalValue}>{ingredient.calories}</p>
-          </li>
-          <li className={styles.item}>
-            <p className={styles.nutritionalTitle}>Белки, г</p>
-            <p className={styles.nutritionalValue}>{ingredient.proteins}</p>
-          </li>
-          <li className={styles.item}>
-            <p className={styles.nutritionalTitle}>Жиры, г</p>
-            <p className={styles.nutritionalValue}>{ingredient.fat}</p>
-          </li>
-          <li className={styles.item}>
-            <p className={styles.nutritionalTitle}>Углеводы, г</p>
-            <p className={styles.nutritionalValue}>{ingredient.carbohydrates}</p>
-          </li>
+    <>
+      {!ingredient && <Preloader />}
+      {ingredient && (
+      <div className={`${styles.container} mb-15`}>
+        <img className="mb-4" src={ingredient.image_large} alt={ingredient.name} />
+        <p className="text text_type_main-medium mb-8">
+          {ingredient.name}
+        </p>
+        <ul className={`${styles.nutritionList} `}>
+          <NutritionValue text="Калории,ккал" value={ingredient.calories} />
+          <NutritionValue text="Белки, г" value={ingredient.proteins} />
+          <NutritionValue text="Жиры, г" value={ingredient.fat} />
+          <NutritionValue text="Углеводы, г" value={ingredient.carbohydrates} />
         </ul>
       </div>
-    )
+      )}
+    </>
   );
-};
-
-IngredientDetails.propTypes = {
-  ingredient: ingredientType.isRequired
 }
 
 export default IngredientDetails;

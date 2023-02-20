@@ -1,38 +1,52 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import styles from './modal.module.css';
+import ReactDOM from 'react-dom';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import ModalOverlay from '../modal-overlay/modal-overlay.jsx';
-import { modalPropTypes } from '../../utils/components-prop-types';
+import PropTypes from 'prop-types';
+import styles from './styles.module.css';
+import ModalOverlay from '../modal-overlay/modal-overlay';
 
-export default function Modal({ children, onClose, title }) {
+const rootModalContainer = document.getElementById('modals');
 
+/* Передача props для модального окна, используются в компоненте App */
+const Modal = ({
+  closeModal, heading, children,
+}) => {
+  const handleEscKeydown = (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  };
   useEffect(() => {
-    function onKeyDown(event) {
-      if (event.key === 'Escape') {
-        onClose()
-      }
-    }
-
-    document.addEventListener('keydown', onKeyDown)
-
+    document.addEventListener('keydown', handleEscKeydown);
     return () => {
-      document.removeEventListener('keydown', onKeyDown)
-    }
-  }, [])
+      document.removeEventListener('keydown', handleEscKeydown);
+    };
+  });
 
-  return createPortal(
-    <>
-      <ModalOverlay onClose={onClose} />
-      <div className={styles.modal}>
-        <h2 className="text text_type_main-large mt-10 ml-10">{title}</h2>
-        <button className={styles.closeButton} onClick={onClose}>
+  /* Рендер вне корневого элемента */
+  return ReactDOM.createPortal(
+    <section className={styles.container}>
+      <div className={`${styles.wrapper}`}>
+        {heading && (
+        <h2 className={`${styles.heading} text text_type_main-large`}>{heading}</h2>
+        )}
+        <button className={styles.closeButton} onClick={closeModal}>
           <CloseIcon type="primary" />
         </button>
         {children}
       </div>
-    </>,
-    document.getElementById('modals')
-  )
-}
-Modal.propTypes = modalPropTypes.isRequired
+      <ModalOverlay handleClick={closeModal} />
+    </section>,
+    rootModalContainer,
+  );
+};
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  heading: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
+
+export default Modal;

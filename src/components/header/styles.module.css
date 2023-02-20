@@ -1,0 +1,47 @@
+.header {
+  width: 100%;
+  padding:0;
+  background-color:#1C1C21;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1280px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.wrapper{
+  composes:navigation;
+  margin: 0;
+  width: 61.5%;
+}
+
+.menuList {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.link {
+  display: flex;
+  text-decoration: none;
+  justify-content: flex-start;
+  color: #8585ad;
+}
+
+.link:hover {
+  color: #f2f2f3;
+  transition: .3s linear;
+}
+
+.linkActive {
+  color: rgb(240, 240, 240, 1);
+}
+
+.linkActive svg {
+  fill: white;
+}
