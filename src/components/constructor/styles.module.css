@@ -1,0 +1,8 @@
+.constructor {
+  max-width: 1240px;
+  display: flex;
+  flex: 1;
+  gap: 40px;
+  box-sizing: border-box;
+  padding: 0;
+}

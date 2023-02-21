@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width:480px;
+  gap: 24px;
+}
+
+.form div {
+  width:100%
+}
+
+.form svg {
+  margin-left: 190px;
+}
+
+.buttons__container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  animation: anim 1s forwards;
+}
+
+@keyframes anim {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}

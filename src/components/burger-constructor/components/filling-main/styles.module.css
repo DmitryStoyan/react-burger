@@ -1,0 +1,27 @@
+.main {
+  position: relative;
+  width: 88%;
+  height: 80px;
+  border-radius: 40px;
+  margin: 20px 0 20px 15px;
+  border: solid 2px #c9c2ec;
+}
+
+.main:hover {
+  transform: scale(1.05);
+}
+
+.main::after {
+  position: absolute;
+  content: 'Перетащите начинку';
+  top: 30%;
+  left: 25%;
+}
+
+.mainHover {
+  composes: main;
+}
+
+.mainHover::after {
+  content: ' ';
+}

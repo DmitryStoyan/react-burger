@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  max-width: 1240px;
+  width: 100%;
+  padding-top: 180px;
+}
+
+.nav {
+  margin-right: 60px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #8585ad;
+  transition: all 0.3s ease;
+}
+
+.linkActive {
+  color: white;
+}
+
+.link:hover {
+  opacity: 0.5;
+  transition: 0.3s linear;
+}
+
+.link:active {
+  color: white;
+}
+
+.text {
+  margin-top: 80px;
+  max-width: 320px;
+  opacity: 0.4;
+}

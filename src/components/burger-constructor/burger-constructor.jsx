@@ -1,209 +1,108 @@
-import { useMemo, useRef } from 'react';
-import styles from './burger-constructor.module.css';
-import CurrencyIconBig from '../../images/currency-icon-big.png';
+/* eslint-disable no-unused-expressions */
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   ConstructorElement,
-  DragIcon,
   Button,
+  CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useAppSelector, useAppDispatch } from '../../services/hooks';
-import { sendOrder } from '../../services/actions/ingredients';
-import { addIngredient, deleteIngredient, sortCart } from '../../services/reducers/ingredients';
-import { useDrop, useDrag } from 'react-dnd';
-import uuid from 'react-uuid';
-import DndField from '../dnd-field/dnd-field';
-import {constructorIngredientPropTypes, stuffListPropTypes} from '../../utils/components-prop-types';
+import { useHistory } from 'react-router-dom';
+import { useDrop } from 'react-dnd';
+import FillingItem from './components/filling-item/filling-item';
+import styles from './styles.module.css';
+import { postOrderRequest, removeItem, addItem } from '../../services/actions/export';
+import { ariaLable } from '../../constants/export';
+import FillingBun from './components/filling-bun/filling-bun';
+import FillingMain from './components/filling-main/filling-main';
+import FillingIngredients from './components/filling-ingredients/filling-ingredients';
 
-// component
-const ConstructorIngredient = ({ ingredient, index, onMove }) => {
-  const dispatch = useAppDispatch();
-  const ref = useRef(null);
-  const { name, price, image, uid } = ingredient;
+function BurgerConstructor() {
+  const {
+    bun, filling, totalPrice, ingredientIds,
+  } = useSelector((store) => store.burgerConstructor);
+  const userData = useSelector((store) => store.userData.userData);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const handleDeleteIngredient = (id) => {
-    dispatch(deleteIngredient(id));
+  const postOrder = (orderData) => {
+    userData && dispatch(postOrderRequest(orderData));
+    !userData && history.push('/login');
   };
 
-  const [{ isDragging }, drag] = useDrag({
-    type: 'stuff',
-    item: { index },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
-  const opacity = isDragging ? 0 : 1;
+  const handleDelete = (item) => {
+    dispatch(removeItem(item));
+  };
 
-  const [, drop] = useDrop({
-    accept: 'stuff',
-
-    hover(item, monitor) {
-      if (!ref.current) {
-        return;
-      }
-      const dragIndex = item.index;
-      const hoverIndex = index;
-      if (dragIndex === hoverIndex) {
-        return;
-      }
-      const hoverBoundingRect = ref.current?.getBoundingClientRect();
-      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-      const clientOffset = monitor.getClientOffset();
-      const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-        return;
-      }
-      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-        return;
-      }
-      onMove(dragIndex, hoverIndex);
-      item.index = hoverIndex;
+  const [{ isHover }, drop] = useDrop({
+    accept: "ingredient",
+    drop(item) {
+      dispatch(addItem(item));
     },
-  });
-
-  drag(drop(ref));
-
-  return (
-    <li className={styles.listElement} ref={ref} style={{ opacity }}>
-      <DragIcon type="primary" />
-      <ConstructorElement
-        text={name}
-        price={price}
-        thumbnail={image}
-        handleClose={() => handleDeleteIngredient(uid)}
-      />
-    </li>
-  );
-};
-
-// component
-const StuffList = ({ target, onHover }) => {
-  const dispatch = useAppDispatch();
-  const { cart } = useAppSelector((store) => store.ingredients);
-
-  const classes = `${styles.burgerBody} ${styles.borderColor}`;
-
-  const borderColor = onHover ? classes : styles.burgerBody;
-
-  const moveItemHandler = (dragIndex, hoverIndex) => {
-    const dragItem = cart[dragIndex];
-
-    if (dragItem) {
-      dispatch(sortCart({ dragItem, hoverIndex, dragIndex }));
-    }
-  };
-
-  const ingredientItem = cart.map(
-    (ingredient, index) =>
-      ingredient.type !== 'bun' && (
-        <ConstructorIngredient
-          ingredient={ingredient}
-          key={ingredient.uid}
-          index={index}
-          onMove={moveItemHandler}
-        />
-      ),
-  );
-  return (
-    <ul className={borderColor} ref={target}>
-      {ingredientItem}
-    </ul>
-  );
-};
-
-export default function BurgerConstructor() {
-  const dispatch = useAppDispatch();
-  const { cart } = useAppSelector((store) => store.ingredients);
-
-  const totalCost = useMemo(() => {
-    if (cart.length > 0) {
-      return cart
-        .map((item) => item.price * (item.type === 'bun' ? 2 : 1))
-        .reduce((sum, current) => {
-          return sum + current;
-        });
-    } else {
-      return 0;
-    }
-  }, [cart]);
-
-  const bun = useMemo(() => {
-    return cart.find((bun) => bun.type === 'bun');
-  }, [cart]);
-
-  const stuff = useMemo(() => {
-    return cart.filter((stuff) => stuff.type !== 'bun');
-  }, [cart]);
-
-  const handleOpenOrderModal = (cart) => {
-    dispatch(sendOrder(cart));
-  };
-
-  const [{ isHover }, dropTarget] = useDrop({
-    accept: 'bun',
     collect: (monitor) => ({
       isHover: monitor.isOver(),
     }),
-    drop(ingredient) {
-      const uid = uuid();
-      dispatch(addIngredient({ ...ingredient, uid }));
-    },
   });
 
   return (
-    <section className={styles.total}>
-      {cart.length > 0 ? (
-        <ul className={styles.ingredientsList}>
-          {bun && (
-            <li className={styles.listElement}>
-              <ConstructorElement
-                type="top"
-                isLocked={true}
-                text={`${bun.name} (верх)`}
-                price={bun.price}
-                thumbnail={bun.image}
+    <section className={`${styles.container} pt-25 pl-4`} aria-label={ariaLable.constructor}>
+      <ul className={`${styles.ingredientList} pr-2`} ref={drop}>
+        {!bun && filling.length === 0 && <FillingIngredients />}
+        {!bun && filling.length > 0 && <FillingBun located="top" />}
+
+        {bun && (
+        <li className={`${styles.ingredientItem} ml-4`}>
+          <ConstructorElement
+            type="top"
+            isLocked
+            text={`${bun.name} (верх)`}
+            price={bun.price}
+            thumbnail={bun.image_mobile}
+          />
+        </li>
+        )}
+        {filling.length === 0 && bun && <FillingMain />}
+        {filling.length > 0 && (
+        <li className={`${styles.ingredientItem}`}>
+          <ul className={`${styles.fillingList} mt-4 mb-4`}>
+
+            {filling.map((item, index) => (
+              <FillingItem
+                item={item}
+                deleteHandler={handleDelete}
+                index={index}
+                key={item.uId}
               />
-            </li>
-          )}
-          <div className={styles.smallScroll}>
-            {stuff.length > 0 ? (
-              <StuffList target={dropTarget} onHover={isHover} />
-            ) : (
-              <DndField target={dropTarget} onHover={isHover} text="Выберите начинку" />
-            )}
-          </div>
-          {bun && (
-            <li className={styles.listElement}>
+            ))}
+          </ul>
+        </li>
+        )}
+        {!bun && filling.length > 0 && <FillingBun located="bottom" />}
+        {bun
+          && (
+            <li className={`${styles.ingredientItem} pl-4`}>
               <ConstructorElement
                 type="bottom"
-                isLocked={true}
+                isLocked
                 text={`${bun.name} (низ)`}
                 price={bun.price}
-                thumbnail={bun.image}
+                thumbnail={bun.image_mobile}
               />
             </li>
           )}
-        </ul>
-      ) : (
-        <DndField target={dropTarget} onHover={isHover} text="Выберите булку" />
-      )}
-
-      <div className={styles.payment}>
-        <div className={styles.price}>
-          <p className="text text_type_digits-medium">{totalCost}</p>
-          <img src={CurrencyIconBig} alt="Значок валюты" />
-        </div>
-        <Button
-          disabled={!cart.length}
-          type="primary"
-          size="large"
-          htmlType="button"
-          onClick={() => handleOpenOrderModal(cart)}>
+      </ul>
+      <div className={`${styles.order} mt-10`}>
+        <span className="text text_type_digits-medium mr-10">
+          {totalPrice}
+          <CurrencyIcon />
+        </span>
+        <Button disabled={!(bun && filling.length > 0)} type="primary" size="medium" onClick={() => postOrder(ingredientIds)}>
           Оформить заказ
         </Button>
       </div>
+
     </section>
   );
 }
 
-BurgerConstructor.propTypes = constructorIngredientPropTypes.isRequired
-StuffList.propTypes = stuffListPropTypes.isRequired
+export default BurgerConstructor;
+
