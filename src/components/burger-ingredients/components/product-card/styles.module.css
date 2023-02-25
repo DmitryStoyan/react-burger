@@ -1,0 +1,23 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 272px;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.cardIsDrag {
+ background: radial-gradient(#642ca3, #3b21ad);;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}

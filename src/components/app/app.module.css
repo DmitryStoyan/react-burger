@@ -1,9 +1,10 @@
-.main {
+.app {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1240px;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 1280px;
   width: 100%;
-  gap: 41.5px;
-  margin: auto;
+  align-items: center;
+  background-color: #131316;
+  box-sizing: border-box;
 }

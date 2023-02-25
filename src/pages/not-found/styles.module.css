@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 180px;
+  gap: 36px;
+  flex-grow: 1;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}

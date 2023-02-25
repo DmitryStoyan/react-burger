@@ -1,0 +1,58 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: showModal 0.3s linear;
+}
+
+.heading {
+  align-self: start;
+  box-sizing: border-box;
+  padding: 50px 0 0 45px;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 720px;
+  min-height: 500px;
+  width: 100%;
+  background-color: #1c1c21;
+  border-radius: 40px;
+  box-sizing: border-box;
+}
+
+.closeButton {
+  position: absolute;
+  top: 60px;
+  right: 40px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0 0 0 auto;
+  z-index: 1000;
+}
+
+.closeButton:hover {
+  opacity: 0.4;
+}
+
+@keyframes showModal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

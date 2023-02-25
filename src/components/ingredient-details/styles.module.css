@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 520px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nutritionList {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

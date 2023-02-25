@@ -1,19 +1,24 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-undef */
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import './index.css';
-import App from './components/app/app.jsx';
-import { Provider } from 'react-redux'
-import {store} from './services/store'
+import { BrowserRouter as Router } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
+import { App } from './components/app/app';
+import reportWebVitals from './reportWebVitals';
+import { store } from './services/store';
+
+ReactDOM.render(
+  <Router basename="/stellar-burger">
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
+  </Router>,
+  document.getElementById('root'),
 );
 
-// reportWebVitals();
+reportWebVitals();

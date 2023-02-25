@@ -1,0 +1,99 @@
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-decoration: none;
+  color: white;
+  background-color: #1C1C21;
+  border-radius: 40px;
+  margin-right: 8px;
+  padding: 24px;
+  transition: opacity 0.2s linear;
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.ingredients_list {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.ingredients_list_item {
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(#1C1C21, #1C1C21) padding-box,
+  linear-gradient(45deg, #801AB2, #4C4CFF) border-box;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+}
+
+.last_ingredient {
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(#1C1C21, #1C1C21) padding-box,
+  linear-gradient(45deg, #801AB2, #4C4CFF) border-box;
+  border: 2px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  border-radius: 50%;
+}
+
+.last_ingredient_image {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.last_ingredient_count {
+  z-index: 9;
+}
+
+.ingredients_list_item:not(:first-child), .last_ingredient {
+  margin-left: -20px;
+}
+
+.ingredients_list_item_image {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  z-index:9;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

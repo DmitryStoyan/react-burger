@@ -1,13 +1,19 @@
-import { configureStore } from '@reduxjs/toolkit'
-import logger from 'redux-logger'
-import {rootReducer} from './reducers'
+// создание store подключение thunk
+import { createStore, applyMiddleware } from 'redux';
+// redux синхронен,для асинхронных действий нужен thunk
+import thunk from 'redux-thunk';
 
+import { composeEnhancers } from '../utils/redux-devtools';
+import { ALL_ORDERS_URL, USER_ORDERS_URL } from '../constants/api-constants';
+import { socketMiddleware } from '../middleware/socketMiddleware';
 
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-})
+import { wsAllOrdersActions, wsUserOrdersActions } from './actions/ws';
+import { rootReducer } from './reducers';
 
-
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+const enhancer = composeEnhancers(applyMiddleware(
+  thunk,
+  socketMiddleware(ALL_ORDERS_URL, wsAllOrdersActions),
+  socketMiddleware(USER_ORDERS_URL, wsUserOrdersActions),
+));
+// состояние приложения и методы для взаимодействия с ним
+export const store = createStore(rootReducer, enhancer);

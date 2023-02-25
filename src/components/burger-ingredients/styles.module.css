@@ -1,0 +1,22 @@
+.products {
+  width: 600px;
+  box-sizing: border-box;
+}
+
+.listsWrapper {
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+.listsWrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.listsWrapper::-webkit-scrollbar-thumb {
+  background-color: #8585ad;
+}
+
+.listsWrapper::-webkit-scrollbar-track {
+  background-color: #2f2f37;
+  margin: 40px 0 52px 0;
+}
