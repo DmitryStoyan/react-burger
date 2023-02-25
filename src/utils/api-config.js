@@ -17,16 +17,22 @@ class Api {
   }
 
   // Отправка данных заказа
-  postOrder(order) {
+  postOrder(accessToken, order) {
     return fetch(`${this._baseUrl}/orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
+        authorization: accessToken,
       },
       body: JSON.stringify({
         ingredients: order,
       }),
     }).then((res) => this._parseResponse(res));
+  }
+
+  // Запрос данных заказа
+  getOrderInfo(orderNumber) {
+    return fetch(`${this._baseUrl}/orders/${orderNumber}`).then((res) => this._parseResponse(res));
   }
 
   // Запрос на восстановление пароля

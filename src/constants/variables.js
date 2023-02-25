@@ -14,6 +14,17 @@ export const ProductType = {
   },
 };
 
+export function formatDate(string) {
+  return new Date(string).toLocaleString();
+}
+
+// eslint-disable-next-line consistent-return
+export const checkStatus = (status) => {
+  if (status === 'done') {
+    return 'Создан';
+  }
+};
+
 // function setUniqueId() {
 //   return Date.now() * Math.random();
 // }

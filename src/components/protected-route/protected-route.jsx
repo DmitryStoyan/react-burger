@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import PropTypes from 'prop-types';
 
 const ProtectedRoute = ({ children, ...rest }) => {
-  const userData = useSelector((store) => store.userData.userData);
+  const { userData } = useSelector((store) => store.userData);
   const location = useLocation();
 
   return (

@@ -7,7 +7,7 @@ import styles from './styles.module.css';
 import { getCookie } from '../../../../utils/cookie';
 
 const ProfileForm = () => {
-  const userData = useSelector((store) => store.userData.userData);
+  const { userData } = useSelector((store) => store.userData);
   const dispatch = useDispatch();
   const accessToken = getCookie('accessToken');
   // eslint-disable-next-line no-undef

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,7 +17,7 @@ export const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-  const userData = useSelector((store) => store.userData.userData);
+  const { userData } = useSelector((store) => store.userData);
 
   const onEmailChange = (e) => {
     setEmail(e.target.value);
@@ -36,7 +37,6 @@ export const Login = () => {
 
   useEffect(() => {
     if (userData) {
-      // eslint-disable-next-line no-unused-expressions
       (location.state && location.state.previousLocation) ? history.push(location.state.previousLocation.pathname) : history.push('/');
     }
   }, [userData, history, location]);

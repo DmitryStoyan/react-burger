@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.order_info {
+  max-width: 640px;
+  padding: 40px 0;
+  width: 100%;
+}
+
+.order_number {
+  width: 100%;
+  text-align: start;
+}
+
+.currency_container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 25px 0 0;
+  margin: 0;
+  list-style: none;
+  gap: 16px;
+  width: 100%;
+  max-height: 320px;
+  overflow-y: scroll;
+}
+
+.list::-webkit-scrollbar {
+  width: 8px;
+  height: 464px;
+  background-color: rgba(47, 47, 55, 1);
+}
+
+.list::-webkit-scrollbar-thumb {
+  height: 292px;
+  background-color: rgba(133, 133, 173, 1);
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(99, 99, 128);
+}
+
+.list_item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.image {
+  object-fit: cover;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: linear-gradient(#000, #000) padding-box,
+  linear-gradient(45deg, #801AB2, #4C4CFF) border-box;
+}
+
+.item_currency {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.item_currency_container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.title {
+  flex-grow: 1;
+}

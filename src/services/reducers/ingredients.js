@@ -6,7 +6,7 @@ import {
 } from '../actions/ingredients';
 
 const $initialState = {
-  ingredients: [],
+  ingredientsArray: [],
   ingredientsRequest: false,
   ingredientsRequestFailed: false,
 };
@@ -25,7 +25,7 @@ export const ingredientsReducer = (state = $initialState, action) => {
         ...state,
         ingredientsRequestFailed: false,
         ingredientsRequest: false,
-        ingredients: action.ingredients,
+        ingredientsArray: action.ingredients,
       };
     }
     case GET_INGREDIENTS_FAILED: {

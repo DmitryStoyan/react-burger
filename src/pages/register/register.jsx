@@ -19,7 +19,7 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const inputRef = useRef(null);
 
-  const userData = useSelector((store) => store.userData.userData);
+  const { userData } = useSelector((store) => store.userData);
 
   const onNameChange = (e) => {
     setUserName(e.target.value);

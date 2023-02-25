@@ -36,7 +36,7 @@ export const Header = () => {
                 activeClassName={styles.linkActive}
                 className={`${styles.link} text text_type_main-default`}
                 exact
-                to="/profile/orders"
+                to="/feed"
               >
                 <ListIcon type={pathname === '/feed' ? 'primary' : 'secondary'} />
                 <span className="ml-2">Лента заказов</span>

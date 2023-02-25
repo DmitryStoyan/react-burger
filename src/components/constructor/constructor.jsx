@@ -11,9 +11,10 @@ import Preloader from '../preloader/preloader';
 import Modal from '../modal/modal';
 import ProtectedRoute from "../protected-route/protected-route";
 import MainContent from "../main-content/main-content";
+import { OrdersInfoDetails } from "../orders-info-details/orders-info-details";
 import { getCookie } from '../../utils/cookie';
 import {
-  getIngredients, closeOrderModal, resetConstructor, closeIngredientModal, checkAuth,
+  getIngredients, closeOrderModal, resetConstructor, closeIngredientModal, checkAuth, cleanOrderInfo,
 } from '../../services/actions/export';
 import {
   Profile,
@@ -22,15 +23,14 @@ import {
   Register,
   ForgotPassword,
   ResetPassword,
+  Feed,
 } from '../../pages';
 
 export const Constructor = () => {
-  // «вытащить» кусок состояния в компонент из store
   const { orderRequest, orderRequestFailed, orderNumber } = useSelector((store) => store.order);
   const accessToken = getCookie('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
 
-  // Отправка экшенов в store
   const dispatch = useDispatch();
 
   const location = useLocation();
@@ -49,6 +49,11 @@ export const Constructor = () => {
     dispatch(closeOrderModal());
     dispatch(resetConstructor());
   }, [dispatch]);
+
+  const closeOrdersModal = useCallback(() => {
+    history.goBack();
+    dispatch(cleanOrderInfo());
+  }, [dispatch, history]);
 
   useEffect(() => {
     dispatch(checkAuth(`Bearer ${accessToken}`, refreshToken));
@@ -76,9 +81,21 @@ export const Constructor = () => {
         <Route exact path="/reset-password">
           <ResetPassword />
         </Route>
+        <Route exact path="/feed">
+          <Feed />
+        </Route>
+
+        <Route exact path="/feed/:orderNumber">
+          <OrdersInfoDetails isPopup={false} />
+        </Route>
+        <Route exact path="/profile/orders/:orderNumber">
+          <OrdersInfoDetails isPopup={false} />
+        </Route>
+
         <ProtectedRoute path="/profile">
           <Profile />
         </ProtectedRoute>
+
         <Route>
           <NotFound />
         </Route>
@@ -89,13 +106,35 @@ export const Constructor = () => {
           {!orderRequest && !orderRequestFailed ? <OrderDetails /> : <Preloader />}
         </Modal>
       )}
+
       {background && (
-        <Route path="/ingredients/:id">
+        <Route exact path="/ingredients/:id">
           <Modal heading="Детали ингредиента" closeModal={() => closeIngredientDetailsModal('/')}>
             <IngredientDetails />
           </Modal>
         </Route>
       )}
+
+      {background && (
+      <Route exact path="/feed/:orderNumber">
+        <Modal
+          closeModal={() => closeOrdersModal()}
+        >
+          <OrdersInfoDetails isPopup />
+        </Modal>
+      </Route>
+      )}
+
+      {background && (
+        <Route exact path="/profile/orders/:orderNumber">
+          <Modal
+            closeModal={() => closeOrdersModal()}
+          >
+            <OrdersInfoDetails isPopup />
+          </Modal>
+        </Route>
+      )}
+
     </div>
   );
 };

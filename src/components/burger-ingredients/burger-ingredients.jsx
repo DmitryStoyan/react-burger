@@ -8,7 +8,7 @@ import ProductList from './components/product-list/product-list';
 import { ProductType, ariaLable } from '../../constants/export';
 
 function BurgerIngredients() {
-  const { ingredients } = useSelector((store) => store.ingredients);
+  const { ingredientsArray } = useSelector((store) => store.ingredients);
 
   const [currentTab, setCurrentTab] = useState('bun');
 
@@ -34,9 +34,9 @@ function BurgerIngredients() {
   };
 
   // сортировка по типа продукта
-  const BUNS = ingredients.filter((ingredient) => ingredient.type === ProductType.Bun.type);
-  const MAINS = ingredients.filter((ingredient) => ingredient.type === ProductType.Main.type);
-  const SAUCES = ingredients.filter((ingredient) => ingredient.type === ProductType.Sauce.type);
+  const BUNS = ingredientsArray.filter((ingredient) => ingredient.type === ProductType.Bun.type);
+  const MAINS = ingredientsArray.filter((ingredient) => ingredient.type === ProductType.Main.type);
+  const SAUCES = ingredientsArray.filter((ingredient) => ingredient.type === ProductType.Sauce.type);
 
   return (
     <section className={`${styles.products} pt-10`} aria-label={ariaLable.ingridients}>

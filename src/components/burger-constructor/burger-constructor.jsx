@@ -1,20 +1,21 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   ConstructorElement,
   Button,
   CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useHistory } from 'react-router-dom';
 import { useDrop } from 'react-dnd';
 import FillingItem from './components/filling-item/filling-item';
 import styles from './styles.module.css';
 import { postOrderRequest, removeItem, addItem } from '../../services/actions/export';
 import { ariaLable } from '../../constants/export';
-import FillingBun from './components/filling-bun/filling-bun';
-import FillingMain from './components/filling-main/filling-main';
 import FillingIngredients from './components/filling-ingredients/filling-ingredients';
+import FillingMain from './components/filling-main/filling-main';
+import FillingBun from './components/filling-bun/filling-bun';
+import { getCookie } from "../../utils/cookie";
 
 function BurgerConstructor() {
   const {
@@ -24,8 +25,10 @@ function BurgerConstructor() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const accessToken = getCookie('accessToken');
+
   const postOrder = (orderData) => {
-    userData && dispatch(postOrderRequest(orderData));
+    userData && dispatch(postOrderRequest(`Bearer ${accessToken}`, orderData));
     !userData && history.push('/login');
   };
 
@@ -46,7 +49,7 @@ function BurgerConstructor() {
   return (
     <section className={`${styles.container} pt-25 pl-4`} aria-label={ariaLable.constructor}>
       <ul className={`${styles.ingredientList} pr-2`} ref={drop}>
-        {!bun && filling.length === 0 && <FillingIngredients />}
+        {!bun && filling.length === 0 && <FillingIngredients check={isHover} />}
         {!bun && filling.length > 0 && <FillingBun located="top" />}
 
         {bun && (
@@ -60,7 +63,7 @@ function BurgerConstructor() {
           />
         </li>
         )}
-        {filling.length === 0 && bun && <FillingMain />}
+        {filling.length === 0 && bun && <FillingMain check={isHover} />}
         {filling.length > 0 && (
         <li className={`${styles.ingredientItem}`}>
           <ul className={`${styles.fillingList} mt-4 mb-4`}>
@@ -105,4 +108,3 @@ function BurgerConstructor() {
 }
 
 export default BurgerConstructor;
-

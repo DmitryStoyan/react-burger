@@ -1,0 +1,27 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 850px;
+  gap: 24px;
+  max-height: 80vh;
+  margin-right: 8px;
+  overflow-y: scroll;
+}
+
+.list::-webkit-scrollbar {
+  width: 8px;
+  height: 664px;
+  background-color: rgba(47, 47, 55, 1);
+}
+
+.list::-webkit-scrollbar-thumb {
+  height: 492px;
+  background-color: rgba(133, 133, 173, 1);
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(99, 99, 128);
+}

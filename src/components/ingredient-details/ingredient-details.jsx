@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -8,9 +9,8 @@ import Preloader from '../preloader/preloader';
 /* Соержимое модалки с ингредиентом, которые устанваливаются кликом по выбранному ингредиенту */
 function IngredientDetails() {
   const { id } = useParams();
-  const { ingredients } = useSelector((store) => store.ingredients);
-  // eslint-disable-next-line no-shadow
-  const ingredient = ingredients.find((ingredient) => ingredient._id === id);
+  const { ingredientsArray } = useSelector((store) => store.ingredients);
+  const ingredient = ingredientsArray.find((ingredient) => ingredient._id === id);
 
   return (
     <>

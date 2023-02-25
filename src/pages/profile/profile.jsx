@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../services/actions/user";
 import styles from './styles.module.css';
 import ProfileForm from "./components/profile-form/profile-form";
+import { OrdersHistory } from "../orders-history/orders-history";
 
 export const Profile = () => {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ export const Profile = () => {
         <ProfileForm />
       </Route>
       <Route exact path={`${path}/orders`}>
-        <span className="text text_type_main-default">Скоро здесь будет лента заказов...</span>
+        <OrdersHistory />
       </Route>
     </main>
   );

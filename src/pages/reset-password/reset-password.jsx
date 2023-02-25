@@ -19,7 +19,7 @@ export const ResetPassword = () => {
   const isPasswordForgot = useSelector((store) => store.userData.isPasswordForgot);
   // возвращает новое местоположение при каждом изменении URL
   const location = useLocation();
-  const userData = useSelector((store) => store.userData.userData);
+  const { userData } = useSelector((store) => store.userData);
 
   const onPasswordChange = (e) => {
     setPassword(e.target.value);
