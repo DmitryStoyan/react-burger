@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useInView } from 'react-intersection-observer';
+
+import { useSelector } from '../../utils/hooks';
+import { ProductType, ariaLable } from '../../constants/export';
+
 import styles from './styles.module.css';
 import ProductNavigation from './components/product-navigation/product-navigation';
 import ProductList from './components/product-list/product-list';
-import { ProductType, ariaLable } from '../../constants/export';
 
 function BurgerIngredients() {
   const { ingredientsArray } = useSelector((store) => store.ingredients);
@@ -30,7 +32,7 @@ function BurgerIngredients() {
     setCurrentTab(type);
     // eslint-disable-next-line no-undef
     const element = document.getElementById(type);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   // сортировка по типа продукта

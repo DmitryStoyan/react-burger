@@ -1,13 +1,15 @@
 /* eslint-disable no-undef */
-import React from "react";
-import { NavLink, Route, useRouteMatch } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logout } from "../../services/actions/user";
-import styles from './styles.module.css';
-import ProfileForm from "./components/profile-form/profile-form";
-import { OrdersHistory } from "../orders-history/orders-history";
+import React from 'react';
+import { NavLink, Route, useRouteMatch } from 'react-router-dom';
 
-export const Profile = () => {
+import { useDispatch } from '../../utils/hooks';
+import { logout } from '../../services/actions/user';
+import { OrdersHistory } from '../orders-history/orders-history';
+
+import styles from './styles.module.css';
+import ProfileForm from './components/profile-form/profile-form';
+
+export function Profile() {
   const dispatch = useDispatch();
   const { path, url } = useRouteMatch();
 
@@ -65,6 +67,6 @@ export const Profile = () => {
       </Route>
     </main>
   );
-};
+}
 
 export default Profile;

@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 180px;
   gap: 36px;
   flex-grow: 1;
-  padding-top: 180px;
 }
 
 .link {
-  text-decoration: none;
   color: white;
+  text-decoration: none;
 }

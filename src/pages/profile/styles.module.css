@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
-  max-width: 1240px;
   width: 100%;
+  min-width: 1240px;
   padding-top: 180px;
 }
 
@@ -10,12 +10,12 @@
 }
 
 .list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 36px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .link {
@@ -38,7 +38,7 @@
 }
 
 .text {
-  margin-top: 80px;
   max-width: 320px;
   opacity: 0.4;
+  margin-top: 80px;
 }

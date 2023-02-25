@@ -1,11 +1,9 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/prop-types */
 import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import styles from './styles.module.css';
+
 import ProductCard from '../product-card/product-card';
+
+import styles from './styles.module.css';
 
 const ProductList = forwardRef(({ items, itemsType }, ref) => (
   <div className={`${styles.container} mb-10`}>
@@ -22,10 +20,5 @@ const ProductList = forwardRef(({ items, itemsType }, ref) => (
     </ul>
   </div>
 ));
-
-ProductList.propTypes = {
-  itemsType: PropTypes.object.isRequired,
-  items: PropTypes.array.isRequired,
-};
 
 export default ProductList;
