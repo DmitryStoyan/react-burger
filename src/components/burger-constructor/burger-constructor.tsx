@@ -9,7 +9,6 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDrop } from 'react-dnd';
 import { useSelector, useDispatch } from '../../../src/utils/hooks';
-
 import { postOrderRequest, removeItem, addItem } from '../../services/actions/export';
 import { ariaLable } from '../../constants/export';
 import { getCookie } from '../../utils/cookie';
