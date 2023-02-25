@@ -39,7 +39,6 @@ const App = () => {
     dispatch(closeOrderModal())
   }
 
-
   return (
     <>
       <AppHeader />
