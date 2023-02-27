@@ -89,7 +89,7 @@ export function Register() {
             name="password"
           />
         </div>
-        <Button disabled={!(name && email && password)} type="primary" size="medium">
+        <Button htmlType='submit' disabled={!(name && email && password)} type="primary" size="medium">
           Зарегистрироваться
         </Button>
       </form>

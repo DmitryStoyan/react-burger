@@ -40,7 +40,7 @@ export function Constructor() {
   const history = useHistory();
 
   const closeModal = useCallback(
-    (path) => {
+    (path: string) => {
       history.push(path);
     },
     [history],

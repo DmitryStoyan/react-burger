@@ -72,7 +72,7 @@ export function Login() {
             name="password"
           />
         </div>
-        <Button disabled={!(email && password)} type="primary" size="medium">
+        <Button htmlType='submit' disabled={!(email && password)} type="primary" size="medium">
           Войти
         </Button>
       </form>

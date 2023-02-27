@@ -102,7 +102,7 @@ function BurgerConstructor() {
           {totalPrice}
           <CurrencyIcon type="secondary" />
         </span>
-        <Button disabled={!(bun && filling.length > 0)} type="primary" size="medium" onClick={() => postOrder(ingredientIds)}>
+        <Button htmlType='button'  disabled={!(bun && filling.length > 0)} type="primary" size="medium" onClick={() => postOrder(ingredientIds)}>
           Оформить заказ
         </Button>
       </div>

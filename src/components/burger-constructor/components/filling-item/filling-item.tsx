@@ -14,7 +14,7 @@ function FillingItem({ item, deleteHandler, index }: IFillingItem) {
   const id = item.uId;
   const dispatch = useDispatch();
 
-  const [{ handlerId }, drop] = useDrop({
+  const [{ handlerId }, drop] = useDrop<any, any, any>({
     accept: 'filling',
     collect(monitor) {
       return {

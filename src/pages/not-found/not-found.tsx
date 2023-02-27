@@ -14,7 +14,7 @@ export function NotFound() {
         Страница не найдена
       </h2>
       <Link className={styles.link} to="/">
-        <Button type="primary" size="medium">
+        <Button htmlType='button' type="primary" size="medium">
           На главную
         </Button>
       </Link>

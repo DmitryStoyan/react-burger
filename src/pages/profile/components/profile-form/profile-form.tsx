@@ -119,10 +119,10 @@ function ProfileForm() {
       {
         isDataChanged && (
         <div className={styles.buttons__container}>
-          <Button onClick={onCancelEditing} type="secondary" size="medium">
+          <Button htmlType='button' onClick={onCancelEditing} type="secondary" size="medium">
             Отмена
           </Button>
-          <Button type="primary" size="medium">
+          <Button htmlType='submit' type="primary" size="medium">
             Сохранить
           </Button>
         </div>

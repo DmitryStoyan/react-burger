@@ -86,7 +86,7 @@ export function ResetPassword() {
             size="default"
           />
         </div>
-        <Button disabled={!(password && code)} type="primary" size="medium">
+        <Button htmlType='submit' disabled={!(password && code)} type="primary" size="medium">
           Сохранить
         </Button>
       </form>

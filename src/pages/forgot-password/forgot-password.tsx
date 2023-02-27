@@ -54,7 +54,7 @@ export function ForgotPassword() {
             size="default"
           />
         </div>
-        <Button disabled={!(email)} type="primary" size="medium">
+        <Button htmlType='button' disabled={!(email)} type="primary" size="medium">
           Восстановить
         </Button>
       </form>
