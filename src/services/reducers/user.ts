@@ -3,44 +3,35 @@ import {
   REGISTRATION,
   REGISTRATION_SUCCESS,
   REGISTRATION_FAILED,
-
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
-
   FORGOT_PASSWORD,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAILED,
-
   RESET_PASSWORD,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILED,
-
   GET_USER_DATA,
   GET_USER_DATA_SUCCESS,
   GET_USER_DATA_FAILED,
-
   LOGOUT,
   LOGOUT_SUCCESS,
   LOGOUT_FAILED,
-
   REFRESH_TOKEN,
   REFRESH_TOKEN_SUCCESS,
   REFRESH_TOKEN_FAILED,
-
   SEND_USER_DATA,
   SEND_USER_DATA_SUCCESS,
   SEND_USER_DATA_FAILED,
-
   SET_FORGOT_PASSWORD_STATE,
-
   CHECK_AUTH,
   CHECK_AUTH_CHECKED,
-} from '../constants/export';
+} from "../constants/export";
 
-import type { IUserState, TUserActions } from '../types/export';
+import type { IUserState, TUserActions } from "../types/export";
 
-const $initialState: IUserState = {
+export const $initialState: IUserState = {
   registrationRequest: false,
   registrationRequestFailed: false,
 
@@ -75,7 +66,10 @@ const $initialState: IUserState = {
 };
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
-export const userReducer = (state = $initialState, action: TUserActions): IUserState => {
+export const userReducer = (
+  state = $initialState,
+  action: TUserActions
+): IUserState => {
   switch (action.type) {
     case REGISTRATION: {
       return {

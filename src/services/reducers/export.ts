@@ -1,6 +1,6 @@
 // реэкспорт
-export * from './constructor';
-export * from './ingredients';
-export * from './order';
-export * from './index';
-export * from './user';
+export * from "./constructor";
+export { ingredientsReducer } from "./ingredients";
+export { orderReducer } from "./order";
+export * from "./index";
+export { userReducer } from "./user";

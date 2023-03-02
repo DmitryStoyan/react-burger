@@ -1,12 +1,10 @@
-import update from 'immutability-helper';
+import update from "immutability-helper";
 
-import {
-  ADD, DELETE, RESET, CHANGE_ORDER,
-} from '../constants/export';
+import { ADD, DELETE, RESET, CHANGE_ORDER } from "../constants/export";
 
-import type { IConstructorState, TConstructorActions } from '../types/export';
+import type { IConstructorState, TConstructorActions } from "../types/export";
 
-const $initialState: IConstructorState = {
+export const $initialState: IConstructorState = {
   bun: null,
   filling: [],
   ingredientIds: [],
@@ -14,10 +12,13 @@ const $initialState: IConstructorState = {
 };
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
-export const constructorReducer = (state = $initialState, action: TConstructorActions): IConstructorState => {
+export const constructorReducer = (
+  state = $initialState,
+  action: TConstructorActions
+): IConstructorState => {
   switch (action.type) {
     case ADD:
-      if (action.item.type === 'bun') {
+      if (action.item.type === "bun") {
         if (state.bun) {
           return {
             ...state,
@@ -25,7 +26,8 @@ export const constructorReducer = (state = $initialState, action: TConstructorAc
             ingredientIds: [...state.ingredientIds]
               .filter((id) => id !== state?.bun?._id)
               .concat(action.item._id),
-            totalPrice: state.totalPrice - state.bun.price * 2 + action.item.price * 2,
+            totalPrice:
+              state.totalPrice - state.bun.price * 2 + action.item.price * 2,
           };
         }
         return {
@@ -45,8 +47,12 @@ export const constructorReducer = (state = $initialState, action: TConstructorAc
     case DELETE:
       return {
         ...state,
-        filling: [...state.filling].filter((item) => item.uId !== action.item.uId),
-        ingredientIds: [...state.ingredientIds].filter((id) => id !== action.item._id),
+        filling: [...state.filling].filter(
+          (item) => item.uId !== action.item.uId
+        ),
+        ingredientIds: [...state.ingredientIds].filter(
+          (id) => id !== action.item._id
+        ),
         totalPrice: state.totalPrice - action.item.price,
       };
 

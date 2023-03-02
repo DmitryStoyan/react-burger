@@ -26,10 +26,10 @@ export function postOrder(): IPostOrderRequest {
   return { type: POST_ORDER_REQUEST };
 }
 
-export function postOrderSuccess(res: IOrderResponse): IPostOrderSuccess {
+export function postOrderSuccess(res: number): IPostOrderSuccess {
   return {
     type: POST_ORDER_SUCCESS,
-    orderNumber: res.order.number,
+    orderNumber: res,
   };
 }
 
@@ -42,6 +42,6 @@ export function postOrderFailed(): IPostOrderFailed {
 export const postOrderRequest: AppThunk = (accessToken: string, order: string[]) => function (dispatch: AppDispatch) {
   dispatch(postOrder());
   api.postOrder(accessToken, order)
-    .then((res) => dispatch(postOrderSuccess(res)))
+    .then((res) =>  dispatch(postOrderSuccess(res.order.number)))
     .catch(() => dispatch(postOrderFailed()));
 };

@@ -3,18 +3,21 @@ import {
   GET_INGREDIENTS_SUCCESS,
   GET_INGREDIENTS_REQUEST,
   RESET_INGREDIENTS_ERROR_STATUS,
-} from '../constants/export';
+} from "../constants/export";
 
-import type { IIngredientsState, TIngredientsActions } from '../types/export';
+import type { IIngredientsState, TIngredientsActions } from "../types/export";
 
-const $initialState: IIngredientsState = {
+export const $initialState: IIngredientsState = {
   ingredientsArray: [],
   ingredientsRequest: false,
   ingredientsRequestFailed: false,
 };
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
-export const ingredientsReducer = (state = $initialState, action: TIngredientsActions): IIngredientsState => {
+export const ingredientsReducer = (
+  state = $initialState,
+  action: TIngredientsActions
+): IIngredientsState => {
   switch (action.type) {
     case GET_INGREDIENTS_REQUEST: {
       return {
