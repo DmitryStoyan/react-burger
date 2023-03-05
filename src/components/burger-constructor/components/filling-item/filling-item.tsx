@@ -1,13 +1,16 @@
-import React, { useRef } from 'react';
-import { useDrop, useDrag } from 'react-dnd';
-import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useDispatch } from '../../../../../src/utils/hooks';
+import React, { useRef } from "react";
+import { useDrop, useDrag } from "react-dnd";
+import {
+  ConstructorElement,
+  DragIcon,
+} from "@ya.praktikum/react-developer-burger-ui-components";
+import { useDispatch } from "../../../../../src/utils/hooks";
 
-import { changeOrder } from '../../../../services/actions/constructor';
+import { changeOrder } from "../../../../services/actions/constructor";
 
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
-import type { IFillingItem } from './filling-item.props';
+import type { IFillingItem } from "./filling-item.props";
 
 function FillingItem({ item, deleteHandler, index }: IFillingItem) {
   const ref = useRef(null);
@@ -15,7 +18,7 @@ function FillingItem({ item, deleteHandler, index }: IFillingItem) {
   const dispatch = useDispatch();
 
   const [{ handlerId }, drop] = useDrop<any, any, any>({
-    accept: 'filling',
+    accept: "filling",
     collect(monitor) {
       return {
         handlerId: monitor.getHandlerId(),
@@ -40,7 +43,7 @@ function FillingItem({ item, deleteHandler, index }: IFillingItem) {
   });
 
   const [{ isDragging }, drag] = useDrag({
-    type: 'filling',
+    type: "filling",
     item: () => ({ id, index }),
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
@@ -53,7 +56,7 @@ function FillingItem({ item, deleteHandler, index }: IFillingItem) {
 
   return (
     <li
-      className={`${styles.fillingItem} mb-4 mr-2`}
+      className={`${styles.fillingItem} mb-4 mr-2 burgerConstructorIngredientClass`}
       style={{ opacity }}
       data-handler-id={handlerId}
       ref={ref}

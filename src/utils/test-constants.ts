@@ -1,23 +1,25 @@
+import exp from "constants";
+
 export const baseUrl = "http://localhost:3000/";
 
 export const user = {
-  name: "Polina",
-  email: "polina007@inbox.ru",
+  name: "Дмитрий1234",
+  email: "test111@yandex.ru",
 };
 
 export const payload = {
   success: true,
   user: {
-    name: "Polina",
-    email: "polina007@inbox.ru",
+    name: "Дмитрий1234",
+    email: "test111@yandex.ru",
   },
 };
 
 export const payload2 = {
   success: true,
   user: {
-    name: "Polina2",
-    email: "polina008@inbox.ru",
+    name: "Дмитрий1234",
+    email: "test111@yandex.ru",
   },
 };
 
@@ -297,9 +299,29 @@ export const login = {
   user: userData,
 };
 
-export const ingredientClass = "[class^=ingredient-card_cardButton]";
-export const closeButtonClass = "[class^=modal_closeButton]";
+export const error = {
+  success: false,
+  message: "string",
+};
+
+export const orders = {
+  orders: [],
+  total: 1,
+  totalToday: 1,
+  createdAt: "string",
+  ingredients: [],
+  name: "string",
+  number: 1,
+  price: 1,
+  status: "string",
+  updatedAt: "string",
+  _id: "string",
+  owner: {
+    name: "Дмитрий1234",
+    email: "test111@yandex.ru",
+    createdAt: "2023-02-27T10:01:22.580Z",
+    updatedAt: "2023-02-27T10:07:48.089Z",
+  },
+};
+
 export const tabClass = "[class^=tab]";
-export const burgerConstructorClass = "[class^=burger-constructor_total]";
-export const burgerConstructorIngredientClass =
-  "[class^=burger-element_element]";

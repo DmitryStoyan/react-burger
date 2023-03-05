@@ -3,16 +3,19 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/destructuring-assignment */
-import React, { useMemo } from 'react';
-import { useDrag } from 'react-dnd';
-import { Link, useLocation } from 'react-router-dom';
-import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
+import React, { useMemo } from "react";
+import { useDrag } from "react-dnd";
+import { Link, useLocation } from "react-router-dom";
+import {
+  CurrencyIcon,
+  Counter,
+} from "@ya.praktikum/react-developer-burger-ui-components";
 
-import { useSelector } from '../../../../utils/hooks';
+import { useSelector } from "../../../../utils/hooks";
 
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
-import type { IIngredientCard } from './product-card.props';
+import type { IIngredientCard } from "./product-card.props";
 
 function ProductCard({ item }: IIngredientCard) {
   const location = useLocation();
@@ -21,21 +24,24 @@ function ProductCard({ item }: IIngredientCard) {
 
   const [{ isDrag }, dragRef] = useDrag(
     {
-      type: 'ingredient',
+      type: "ingredient",
       item,
       collect: (monitor) => ({
         isDrag: monitor.isDragging(),
       }),
     },
-    [bun, filling],
+    [bun, filling]
   );
 
   // счетчик наличия ингрединта в меню
   const setCount: any = useMemo(() => {
-    if (item.type === 'bun') {
+    if (item.type === "bun") {
       return bun && item._id === bun._id ? 1 : null;
     }
-    return filling && filling.filter((fillingItem) => fillingItem._id === item._id).length;
+    return (
+      filling &&
+      filling.filter((fillingItem) => fillingItem._id === item._id).length
+    );
   }, [bun, filling, item._id, item.type]);
 
   return (
@@ -47,13 +53,13 @@ function ProductCard({ item }: IIngredientCard) {
       }}
     >
       <div
-        className={`${styles.card} pl-4 pr-4`}
+        className={`${styles.card} pl-4 pr-4 ingredientClass`}
         ref={dragRef}
         draggable
       >
         {setCount > 0 && <Counter count={setCount} size="default" />}
         <img
-          className={isDrag ? `${styles.cardIsDrag}` : ''}
+          className={isDrag ? `${styles.cardIsDrag}` : ""}
           src={item.image}
           alt={item.name}
         />
