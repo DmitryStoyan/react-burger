@@ -1,4 +1,4 @@
-import { tabClass } from "../../src/utils/test-constants";
+import { tabClass, ingredientClass } from "../../src/utils/test-constants";
 
 describe("service is available", function () {
   beforeEach(function () {

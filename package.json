@@ -34,8 +34,11 @@
     "test": "react-scripts test --transformIgnorePatterns \"node_modules\"",
     "eject": "react-scripts eject",
     "cypress": "cypress open cache clear",
-    "test:cypress": "cypress run"
+    "test:cypress": "cypress run",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "./",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -58,6 +61,7 @@
     "@4tw/cypress-drag-drop": "^2.2.3",
     "@types/jest": "^29.4.0",
     "@types/react-router-dom": "^5.3.3",
-    "cypress": "^12.7.0"
+    "cypress": "^12.7.0",
+    "gh-pages": "^5.0.0"
   }
 }
