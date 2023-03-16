@@ -1,14 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
-import { Route, Redirect, useLocation } from 'react-router-dom';
-import { useSelector } from '../../../src/utils/hooks';
+import React from "react";
+import { Route, Redirect, useLocation } from "react-router-dom";
+import { useSelector } from "../../../src/utils/hooks";
 
-import Preloader from '../preloader/preloader';
+import Preloader from "../preloader/preloader";
 
-import type { RouteProps } from 'react-router-dom';
-
-import PropTypes from 'prop-types';
-
+import type { RouteProps } from "react-router-dom";
 
 function ProtectedRoute({ children, ...rest }: RouteProps) {
   const { userData, isAuthChecked } = useSelector((store) => store.userData);
@@ -35,17 +32,15 @@ function ProtectedRoute({ children, ...rest }: RouteProps) {
 
   if (isAuthChecked && !userData) {
     return (
-          <Redirect to={{
-            pathname: '/login',
-            state: { previousLocation: location },
-          }}
-          />)
+      <Redirect
+        to={{
+          pathname: "/login",
+          state: { previousLocation: location },
+        }}
+      />
+    );
   }
   return <Route {...rest}>{children}</Route>;
 }
-
-ProtectedRoute.propTypes = {
-  children: PropTypes.element.isRequired,
-};
 
 export default ProtectedRoute;

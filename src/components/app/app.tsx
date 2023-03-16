@@ -1,9 +1,9 @@
-import React from 'react';
+// import React from "react";
 
-import { Constructor } from '../constructor/constructor';
-import { Header } from '../header/header';
+import { Constructor } from "../constructor/constructor";
+import { Header } from "../header/header";
 
-import appStyles from './app.module.css';
+import appStyles from "./app.module.css";
 
 export function App() {
   return (

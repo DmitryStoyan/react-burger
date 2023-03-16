@@ -1,21 +1,23 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useCallback } from 'react';
-import {
-  Switch, Route, useLocation, useHistory,
-} from 'react-router-dom';
-import { useDispatch, useSelector } from '../../../src/utils/hooks';
+import React, { useEffect, useCallback } from "react";
+import { Switch, Route, useLocation, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "../../../src/utils/hooks";
 
-import OrderDetails from '../order-details/order-details';
-import IngredientDetails from '../ingredient-details/ingredient-details';
-import Preloader from '../preloader/preloader';
-import Modal from '../modal/modal';
-import ProtectedRoute from '../protected-route/protected-route';
-import MainContent from '../main-content/main-content';
-import { OrdersInfoDetails } from '../orders-info-details/orders-info-details';
-import { getCookie } from '../../utils/cookie';
+import OrderDetails from "../order-details/order-details";
+import IngredientDetails from "../ingredient-details/ingredient-details";
+import Preloader from "../preloader/preloader";
+import Modal from "../modal/modal";
+import ProtectedRoute from "../protected-route/protected-route";
+import MainContent from "../main-content/main-content";
+import { OrdersInfoDetails } from "../orders-info-details/orders-info-details";
+import { getCookie } from "../../utils/cookie";
 import {
-  getIngredients, closeOrderModal, resetConstructor, checkAuth, cleanOrderInfo,
-} from '../../services/actions/export';
+  getIngredients,
+  closeOrderModal,
+  resetConstructor,
+  checkAuth,
+  cleanOrderInfo,
+} from "../../services/actions/export";
 import {
   Profile,
   NotFound,
@@ -24,14 +26,16 @@ import {
   ForgotPassword,
   ResetPassword,
   Feed,
-} from '../../pages';
+} from "../../pages";
 
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
 export function Constructor() {
-  const { orderRequest, orderRequestFailed, orderNumber } = useSelector((store) => store.order);
-  const accessToken = getCookie('accessToken');
-  const refreshToken = localStorage.getItem('refreshToken');
+  const { orderRequest, orderRequestFailed, orderNumber } = useSelector(
+    (store) => store.order
+  );
+  const accessToken = getCookie("accessToken");
+  const refreshToken = localStorage.getItem("refreshToken");
 
   const dispatch = useDispatch();
 
@@ -43,7 +47,7 @@ export function Constructor() {
     (path: string) => {
       history.push(path);
     },
-    [history],
+    [history]
   );
 
   const closeOrderDetailsModal = useCallback(() => {
@@ -104,38 +108,40 @@ export function Constructor() {
 
       {orderNumber && (
         <Modal closeModal={closeOrderDetailsModal}>
-          {!orderRequest && !orderRequestFailed ? <OrderDetails /> : <Preloader />}
+          {!orderRequest && !orderRequestFailed ? (
+            <OrderDetails />
+          ) : (
+            <Preloader />
+          )}
         </Modal>
       )}
 
       {background && (
         <Route exact path="/ingredients/:id">
-          <Modal heading="Детали ингредиента" closeModal={() => closeModal('/')}>
+          <Modal
+            heading="Детали ингредиента"
+            closeModal={() => closeModal("/")}
+          >
             <IngredientDetails />
           </Modal>
         </Route>
       )}
 
       {background && (
-      <Route exact path="/feed/:orderNumber">
-        <Modal
-          closeModal={() => closeOrdersModal()}
-        >
-          <OrdersInfoDetails isPopup />
-        </Modal>
-      </Route>
-      )}
-
-      {background && (
-        <Route exact path="/profile/orders/:orderNumber">
-          <Modal
-            closeModal={() => closeOrdersModal()}
-          >
+        <Route exact path="/feed/:orderNumber">
+          <Modal closeModal={() => closeOrdersModal()}>
             <OrdersInfoDetails isPopup />
           </Modal>
         </Route>
       )}
 
+      {background && (
+        <Route exact path="/profile/orders/:orderNumber">
+          <Modal closeModal={() => closeOrdersModal()}>
+            <OrdersInfoDetails isPopup />
+          </Modal>
+        </Route>
+      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypese from "prop-types";
+
 import { useSelector } from "../../../src/utils/hooks";
 
 import doneIcon from "../../images/done.svg";
@@ -29,9 +29,5 @@ function OrderDetails() {
     </div>
   );
 }
-
-OrderDetails.propTypese = {
-  orderNum: PropTypese.number.isRequired,
-};
 
 export default OrderDetails;

@@ -325,4 +325,4 @@ export const orders = {
 };
 
 export const tabClass = "[class^=tab]";
-export const ingredientClass = "[class^=product-card_card]";
+export const ingredientClass = ".ingredientClass";
