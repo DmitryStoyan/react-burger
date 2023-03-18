@@ -19,26 +19,21 @@ describe("order reducer test", () => {
   });
   it("reset order order test", () => {
     expect(reducer(state, resetOrderError())).toEqual({
-      orderRequest: false,
+      ...state,
       orderRequestFailed: false,
-      orderNumber: null,
-      isOrderDetailsOpened: false,
     });
   });
   it("postOrder test", () => {
     expect(reducer(state, postOrder())).toEqual({
+      ...state,
       orderRequest: true,
-      orderRequestFailed: false,
-      orderNumber: null,
-      isOrderDetailsOpened: false,
     });
   });
   it("postOrder test", () => {
     expect(reducer(state, postOrderFailed())).toEqual({
+      ...state,
       orderRequest: false,
       orderRequestFailed: true,
-      orderNumber: null,
-      isOrderDetailsOpened: false,
     });
   });
 });

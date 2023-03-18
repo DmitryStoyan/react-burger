@@ -28,10 +28,6 @@ function MainContent() {
     dispatch(resetOrderError());
   };
 
-  useEffect(() => {
-    dispatch(getIngredients());
-  }, [dispatch]);
-
   return (
     <div className={styles.wrapper}>
       {ingredientsRequest && !ingredientsRequestFailed && <Preloader />}

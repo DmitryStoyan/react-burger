@@ -1,0 +1,46 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=422
+END=2261
+title=service is available should be available on localhost:3000
+[CHAPTER]
+TIMEBASE=1/1000
+START=2667
+END=4103
+title=service is available should open ingredient details close ingredient details by button
+[CHAPTER]
+TIMEBASE=1/1000
+START=4975
+END=5565
+title=service is available should tab
+[CHAPTER]
+TIMEBASE=1/1000
+START=5521
+END=6158
+title=service is available should scroll
+[CHAPTER]
+TIMEBASE=1/1000
+START=-8760
+END=6798
+title=service is available should dragndrop ingredients and set buns and dragndrop ingredients constructor and delete ingredient from constructor
+[CHAPTER]
+TIMEBASE=1/1000
+START=19398
+END=22420
+title=service is available should open order details
+[CHAPTER]
+TIMEBASE=1/1000
+START=24029
+END=25473
+title=service is available should login
+[CHAPTER]
+TIMEBASE=1/1000
+START=21654
+END=26921
+title=service is available should open order modal
+[CHAPTER]
+TIMEBASE=1/1000
+START=6383
+END=32214
+title=service is available should show order number and close modal

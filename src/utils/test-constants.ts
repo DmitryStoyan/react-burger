@@ -326,3 +326,4 @@ export const orders = {
 
 export const tabClass = "[class^=tab]";
 export const ingredientClass = ".ingredientClass";
+export const burgerConstructorClass = ".burgerConstructorClass";

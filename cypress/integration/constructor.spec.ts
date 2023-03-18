@@ -1,4 +1,8 @@
-import { tabClass, ingredientClass } from "../../src/utils/test-constants";
+import {
+  tabClass,
+  ingredientClass,
+  burgerConstructorClass,
+} from "../../src/utils/test-constants";
 
 describe("service is available", function () {
   beforeEach(function () {
@@ -27,16 +31,16 @@ describe("service is available", function () {
   });
 
   it("should dragndrop ingredients and set buns and dragndrop ingredients constructor and delete ingredient from constructor", function () {
-    cy.get(ingredientClass).eq(0).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(4).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(1).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(9).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(4).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(4).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(1).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(9).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(4).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(0).drag(".burgerConstructorClass");
+    cy.get(ingredientClass).eq(0).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(4).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(1).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(9).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(4).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(4).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(1).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(9).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(4).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(0).drag(burgerConstructorClass);
 
     cy.get(".burger-constructor_scroll").eq(4).and("not.exist");
 
@@ -51,9 +55,9 @@ describe("service is available", function () {
   });
 
   it("should open order details", function () {
-    cy.get(ingredientClass).eq(0).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(4).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(9).drag(".burgerConstructorClass");
+    cy.get(ingredientClass).eq(0).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(4).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(9).drag(burgerConstructorClass);
 
     cy.get("button").contains("Оформить заказ").click();
   });
@@ -77,9 +81,9 @@ describe("service is available", function () {
 
     cy.get(".ml-2").contains("Конструктор").click();
 
-    cy.get(ingredientClass).eq(0).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(4).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(9).drag(".burgerConstructorClass");
+    cy.get(ingredientClass).eq(0).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(4).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(9).drag(burgerConstructorClass);
 
     cy.wait(1000).get("button").contains("Оформить заказ").click();
   });
@@ -94,9 +98,9 @@ describe("service is available", function () {
 
     cy.get(".ml-2").contains("Конструктор").click();
 
-    cy.get(ingredientClass).eq(0).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(4).drag(".burgerConstructorClass");
-    cy.get(ingredientClass).eq(9).drag(".burgerConstructorClass");
+    cy.get(ingredientClass).eq(0).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(4).drag(burgerConstructorClass);
+    cy.get(ingredientClass).eq(9).drag(burgerConstructorClass);
 
     cy.wait(1000).get("button").contains("Оформить заказ").click();
 

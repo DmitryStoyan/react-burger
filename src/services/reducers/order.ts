@@ -36,7 +36,6 @@ export const orderReducer = (
     }
     case POST_ORDER_SUCCESS: {
       return {
-        ...state,
         orderRequest: false,
         orderRequestFailed: false,
         orderNumber: action.orderNumber,

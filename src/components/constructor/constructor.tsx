@@ -62,7 +62,6 @@ export function Constructor() {
 
   useEffect(() => {
     dispatch(checkAuth(`Bearer ${accessToken}`));
-    dispatch(getIngredients());
   }, [dispatch, accessToken, refreshToken]);
 
   return (
