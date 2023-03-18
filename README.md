@@ -33,7 +33,7 @@
 
 #### Ссылка на сайт:
 
-- [Stellar Burgers]()
+- [Stellar Burgers](https://react-burger-7iyb564ce-dmitrystoyan.vercel.app/)
 
 #### Figma:
 
