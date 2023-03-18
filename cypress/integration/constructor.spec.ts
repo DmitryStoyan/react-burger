@@ -2,6 +2,9 @@ import {
   tabClass,
   ingredientClass,
   burgerConstructorClass,
+  burgerConstructorIngredientClass,
+  email,
+  password,
 } from "../../src/utils/test-constants";
 
 describe("service is available", function () {
@@ -44,12 +47,12 @@ describe("service is available", function () {
 
     cy.get(".burger-constructor_scroll").eq(4).and("not.exist");
 
-    cy.get(".burgerConstructorIngredientClass")
+    cy.get(burgerConstructorIngredientClass)
       .eq(0)
-      .drag(".burgerConstructorIngredientClass");
-    cy.get(".burgerConstructorIngredientClass")
+      .drag(burgerConstructorIngredientClass);
+    cy.get(burgerConstructorIngredientClass)
       .eq(1)
-      .drag(".burgerConstructorIngredientClass");
+      .drag(burgerConstructorIngredientClass);
 
     cy.get("[class^=constructor-element__action]").eq(2).click();
   });
@@ -64,8 +67,7 @@ describe("service is available", function () {
 
   it("should login", function () {
     cy.get(".ml-2").contains("Личный кабинет").click();
-    const email = "test111@yandex.ru";
-    const password = "Aa1234567890";
+
     cy.get("input").first().type(email);
     cy.get("input").last().type(password);
     cy.get("button").click();
@@ -73,8 +75,7 @@ describe("service is available", function () {
 
   it("should open order modal", function () {
     cy.get(".ml-2").contains("Личный кабинет").click();
-    const email = "test111@yandex.ru";
-    const password = "Aa1234567890";
+
     cy.get("input").first().type(email);
     cy.get("input").last().type(password);
     cy.get("button").click();
@@ -90,8 +91,7 @@ describe("service is available", function () {
 
   it("should show order number and close modal", function () {
     cy.get(".ml-2").contains("Личный кабинет").click();
-    const email = "test111@yandex.ru";
-    const password = "Aa1234567890";
+
     cy.get("input").first().type(email);
     cy.get("input").last().type(password);
     cy.get("button").click();

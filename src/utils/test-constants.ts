@@ -327,3 +327,7 @@ export const orders = {
 export const tabClass = "[class^=tab]";
 export const ingredientClass = ".ingredientClass";
 export const burgerConstructorClass = ".burgerConstructorClass";
+export const burgerConstructorIngredientClass =
+  ".burgerConstructorIngredientClass";
+export const email = "test111@yandex.ru";
+export const password = "Aa1234567890";
