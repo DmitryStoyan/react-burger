@@ -30,14 +30,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules\"",
     "eject": "react-scripts eject",
     "cypress": "cypress open cache clear",
-    "test:cypress": "cypress run",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "test:cypress": "cypress run"
   },
   "homepage": "./",
   "eslintConfig": {
