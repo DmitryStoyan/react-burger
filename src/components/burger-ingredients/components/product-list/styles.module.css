@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -18,3 +19,25 @@
   text-align: center;
   cursor: pointer;
 }
+=======
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  list-style: none;
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+}
+
+.item {
+  cursor: pointer;
+  text-align: center;
+}
+>>>>>>> 7d1a25206d9183d23db06393a46733c4e3dd790f

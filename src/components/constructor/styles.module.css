@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .constructor {
   display: flex;
   flex: 1;
@@ -6,3 +7,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+=======
+.constructor {
+  max-width: 1240px;
+  display: flex;
+  flex: 1;
+  gap: 40px;
+  box-sizing: border-box;
+  padding: 0;
+}
+>>>>>>> 7d1a25206d9183d23db06393a46733c4e3dd790f

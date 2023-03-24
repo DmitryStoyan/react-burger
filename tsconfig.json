@@ -9,13 +9,10 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "types": ["cypress", "@4tw/cypress-drag-drop"]
+    "jsx": "react-jsx"
   },
-  "include": ["src", "cypress"]
+  "include": ["src"]
 }

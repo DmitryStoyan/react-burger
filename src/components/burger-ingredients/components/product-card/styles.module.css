@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .card {
   position: relative;
   display: flex;
@@ -21,3 +22,28 @@
   text-decoration: none;
   color: inherit;
 }
+=======
+.card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 272px;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.cardIsDrag {
+ background: radial-gradient(#642ca3, #3b21ad);;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+>>>>>>> 7d1a25206d9183d23db06393a46733c4e3dd790f

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
   padding-top: 180px;
   gap: 36px;
   flex-grow: 1;
@@ -11,3 +12,14 @@
   color: white;
   text-decoration: none;
 }
+=======
+  gap: 36px;
+  flex-grow: 1;
+  padding-top: 180px;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+>>>>>>> 7d1a25206d9183d23db06393a46733c4e3dd790f

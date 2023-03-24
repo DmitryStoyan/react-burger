@@ -1,8 +1,15 @@
 .bun {
+<<<<<<< HEAD
   position: relative;
   width: 88%;
   height: 77px;
   left:20px;
+=======
+  left:20px;
+  width: 88%;
+  height: 77px;
+  position: relative;
+>>>>>>> 7d1a25206d9183d23db06393a46733c4e3dd790f
   border: solid 2px #c9c2ec;
 }
 

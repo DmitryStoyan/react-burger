@@ -1,7 +1,12 @@
 .wrapper {
   display: flex;
+<<<<<<< HEAD
   width: 100%;
   min-width: 1240px;
+=======
+  max-width: 1240px;
+  width: 100%;
+>>>>>>> 7d1a25206d9183d23db06393a46733c4e3dd790f
   padding-top: 180px;
 }
 
@@ -10,12 +15,21 @@
 }
 
 .list {
+<<<<<<< HEAD
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 36px;
+=======
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+>>>>>>> 7d1a25206d9183d23db06393a46733c4e3dd790f
 }
 
 .link {
@@ -38,7 +52,13 @@
 }
 
 .text {
+<<<<<<< HEAD
   max-width: 320px;
   opacity: 0.4;
   margin-top: 80px;
+=======
+  margin-top: 80px;
+  max-width: 320px;
+  opacity: 0.4;
+>>>>>>> 7d1a25206d9183d23db06393a46733c4e3dd790f
 }
