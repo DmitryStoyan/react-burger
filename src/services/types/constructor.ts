@@ -1,7 +1,10 @@
 import type {
-  ADD, DELETE, RESET, CHANGE_ORDER,
-} from '../constants/constructor';
-import type { IIngredient } from './data';
+  ADD,
+  DELETE,
+  RESET,
+  CHANGE_ORDER,
+} from "../constants/constructor";
+import type { IIngredient } from "./data";
 
 export interface IConstructorState {
   bun: IIngredient | null;
